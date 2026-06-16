@@ -2,8 +2,9 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Encuesta de Satisfacción</title>
+
   <style>
     * {
       margin: 0;
@@ -21,58 +22,54 @@
 
     h2 {
       text-align: center;
-      color: #222;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       font-size: 22px;
     }
 
     label {
       font-weight: bold;
       display: block;
-      margin-top: 18px;
-      margin-bottom: 6px;
-      color: #333;
-      font-size: 15px;
+      margin-top: 15px;
+      margin-bottom: 5px;
     }
 
     input, textarea {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 10px;
+      padding: 10px;
       border-radius: 8px;
-      border: 1px solid #ddd;
-      font-size: 16px;
+      border: 1px solid #ccc;
+      font-size: 15px;
     }
 
     textarea {
-      resize: vertical;
       min-height: 100px;
+      resize: vertical;
     }
 
     button {
       width: 100%;
       padding: 14px;
-      margin-top: 25px;
+      margin-top: 20px;
       background: #007bff;
       color: white;
       border: none;
       border-radius: 8px;
-      font-size: 17px;
+      font-size: 16px;
       font-weight: bold;
       cursor: pointer;
     }
 
-    button:active {
-      background: #0056b3;
+    button:disabled {
+      background: #999;
+      cursor: not-allowed;
     }
 
-    /* 星星评分样式（手机/电脑都完美） */
+    /* 星星评分 */
     .rating {
       display: flex;
       flex-direction: row-reverse;
-      justify-content: flex-start;
-      gap: 10px;
-      margin-bottom: 5px;
+      justify-content: flex-end;
+      gap: 5px;
     }
 
     .rating input {
@@ -80,179 +77,145 @@
     }
 
     .rating label {
-      font-size: 32px;
+      font-size: 28px;
       color: #ddd;
       cursor: pointer;
-      transition: 0.2s;
-      margin:0;
     }
 
     .rating input:checked ~ label,
     .rating label:hover,
     .rating label:hover ~ label {
-      color: #ffc107;
+      color: gold;
     }
   </style>
 </head>
 
 <body>
-  <h2>Encuesta de Satisfacción de Viaje</h2>
-  <form id="surveyForm">
 
-    <label>Grupo:</label>
-    <input type="text" name="groupCode" placeholder="Código del grupo" required>
+<h2>Encuesta de Satisfacción</h2>
 
-    <label>Nombre:</label>
-    <input type="text" name="name" placeholder="Nombre completo" required>
+<form id="surveyForm">
 
-    <label>Ciudad:</label>
-    <input type="text" name="ciudades" placeholder="Ciudad" required>
+  <label>Grupo</label>
+  <input name="groupCode" required>
 
-    <label>Itinerario:</label>
-    <input type="text" name="itinerario" placeholder="Itinerario" required>
+  <label>Nombre</label>
+  <input name="name" required>
 
-    <label>Puntos Escénicos:</label>
-    <input type="text" name="puntosEscenicos" placeholder="Puntos visitados">
+  <label>Ciudad</label>
+  <input name="ciudades" required>
 
-    <!-- Hotel -->
-    <label>Hotel - Desayuno</label>
-    <div class="rating">
-      <input type="radio" name="hotelDesayuno" id="hd5" value="5"><label for="hd5">★</label>
-      <input type="radio" name="hotelDesayuno" id="hd4" value="4"><label for="hd4">★</label>
-      <input type="radio" name="hotelDesayuno" id="hd3" value="3"><label for="hd3">★</label>
-      <input type="radio" name="hotelDesayuno" id="hd2" value="2"><label for="hd2">★</label>
-      <input type="radio" name="hotelDesayuno" id="hd1" value="1"><label for="hd1">★</label>
-    </div>
+  <label>Itinerario</label>
+  <input name="itinerario" required>
 
-    <label>Hotel - Instalaciones</label>
-    <div class="rating">
-      <input type="radio" name="hotelInstalacion" id="hi5" value="5"><label for="hi5">★</label>
-      <input type="radio" name="hotelInstalacion" id="hi4" value="4"><label for="hi4">★</label>
-      <input type="radio" name="hotelInstalacion" id="hi3" value="3"><label for="hi3">★</label>
-      <input type="radio" name="hotelInstalacion" id="hi2" value="2"><label for="hi2">★</label>
-      <input type="radio" name="hotelInstalacion" id="hi1" value="1"><label for="hi1">★</label>
-    </div>
+  <label>Puntos Escénicos</label>
+  <input name="puntosEscenicos">
 
-    <label>Hotel - Servicio</label>
-    <div class="rating">
-      <input type="radio" name="hotelServicio" id="hs5" value="5"><label for="hs5">★</label>
-      <input type="radio" name="hotelServicio" id="hs4" value="4"><label for="hs4">★</label>
-      <input type="radio" name="hotelServicio" id="hs3" value="3"><label for="hs3">★</label>
-      <input type="radio" name="hotelServicio" id="hs2" value="2"><label for="hs2">★</label>
-      <input type="radio" name="hotelServicio" id="hs1" value="1"><label for="hs1">★</label>
-    </div>
+  <label>Hotel - Desayuno</label>
+  <div class="rating">
+    <input type="radio" name="hotelDesayuno" value="5" id="hd5"><label for="hd5">★</label>
+    <input type="radio" name="hotelDesayuno" value="4" id="hd4"><label for="hd4">★</label>
+    <input type="radio" name="hotelDesayuno" value="3" id="hd3"><label for="hd3">★</label>
+    <input type="radio" name="hotelDesayuno" value="2" id="hd2"><label for="hd2">★</label>
+    <input type="radio" name="hotelDesayuno" value="1" id="hd1"><label for="hd1">★</label>
+  </div>
 
-    <!-- Restaurante -->
-    <label>Restaurante - Calidad</label>
-    <div class="rating">
-      <input type="radio" name="restCalidad" id="rc5" value="5"><label for="rc5">★</label>
-      <input type="radio" name="restCalidad" id="rc4" value="4"><label for="rc4">★</label>
-      <input type="radio" name="restCalidad" id="rc3" value="3"><label for="rc3">★</label>
-      <input type="radio" name="restCalidad" id="rc2" value="2"><label for="rc2">★</label>
-      <input type="radio" name="restCalidad" id="rc1" value="1"><label for="rc1">★</label>
-    </div>
+  <label>Hotel - Instalaciones</label>
+  <div class="rating">
+    <input type="radio" name="hotelInstalacion" value="5" id="hi5"><label for="hi5">★</label>
+    <input type="radio" name="hotelInstalacion" value="4" id="hi4"><label for="hi4">★</label>
+    <input type="radio" name="hotelInstalacion" value="3" id="hi3"><label for="hi3">★</label>
+    <input type="radio" name="hotelInstalacion" value="2" id="hi2"><label for="hi2">★</label>
+    <input type="radio" name="hotelInstalacion" value="1" id="hi1"><label for="hi1">★</label>
+  </div>
 
-    <label>Restaurante - Servicio</label>
-    <div class="rating">
-      <input type="radio" name="restServicio" id="rs5" value="5"><label for="rs5">★</label>
-      <input type="radio" name="restServicio" id="rs4" value="4"><label for="rs4">★</label>
-      <input type="radio" name="restServicio" id="rs3" value="3"><label for="rs3">★</label>
-      <input type="radio" name="restServicio" id="rs2" value="2"><label for="rs2">★</label>
-      <input type="radio" name="restServicio" id="rs1" value="1"><label for="rs1">★</label>
-    </div>
+  <label>Hotel - Servicio</label>
+  <div class="rating">
+    <input type="radio" name="hotelServicio" value="5" id="hs5"><label for="hs5">★</label>
+    <input type="radio" name="hotelServicio" value="4" id="hs4"><label for="hs4">★</label>
+    <input type="radio" name="hotelServicio" value="3" id="hs3"><label for="hs3">★</label>
+    <input type="radio" name="hotelServicio" value="2" id="hs2"><label for="hs2">★</label>
+    <input type="radio" name="hotelServicio" value="1" id="hs1"><label for="hs1">★</label>
+  </div>
 
-    <label>Restaurante - Ambiente</label>
-    <div class="rating">
-      <input type="radio" name="restAmbiente" id="ra5" value="5"><label for="ra5">★</label>
-      <input type="radio" name="restAmbiente" id="ra4" value="4"><label for="ra4">★</label>
-      <input type="radio" name="restAmbiente" id="ra3" value="3"><label for="ra3">★</label>
-      <input type="radio" name="restAmbiente" id="ra2" value="2"><label for="ra2">★</label>
-      <input type="radio" name="restAmbiente" id="ra1" value="1"><label for="ra1">★</label>
-    </div>
+  <label>Restaurante - Calidad</label>
+  <div class="rating">
+    <input type="radio" name="restCalidad" value="5" id="rc5"><label for="rc5">★</label>
+    <input type="radio" name="restCalidad" value="4" id="rc4"><label for="rc4">★</label>
+    <input type="radio" name="restCalidad" value="3" id="rc3"><label for="rc3">★</label>
+    <input type="radio" name="restCalidad" value="2" id="rc2"><label for="rc2">★</label>
+    <input type="radio" name="restCalidad" value="1" id="rc1"><label for="rc1">★</label>
+  </div>
 
-    <!-- Guía -->
-    <label>Guía - Actitud</label>
-    <div class="rating">
-      <input type="radio" name="guiaActitud" id="ga5" value="5"><label for="ga5">★</label>
-      <input type="radio" name="guiaActitud" id="ga4" value="4"><label for="ga4">★</label>
-      <input type="radio" name="guiaActitud" id="ga3" value="3"><label for="ga3">★</label>
-      <input type="radio" name="guiaActitud" id="ga2" value="2"><label for="ga2">★</label>
-      <input type="radio" name="guiaActitud" id="ga1" value="1"><label for="ga1">★</label>
-    </div>
+  <label>Restaurante - Servicio</label>
+  <div class="rating">
+    <input type="radio" name="restServicio" value="5" id="rs5"><label for="rs5">★</label>
+    <input type="radio" name="restServicio" value="4" id="rs4"><label for="rs4">★</label>
+    <input type="radio" name="restServicio" value="3" id="rs3"><label for="rs3">★</label>
+    <input type="radio" name="restServicio" value="2" id="rs2"><label for="rs2">★</label>
+    <input type="radio" name="restServicio" value="1" id="rs1"><label for="rs1">★</label>
+  </div>
 
-    <label>Guía - Conocimiento</label>
-    <div class="rating">
-      <input type="radio" name="guiaConocimiento" id="gc5" value="5"><label for="gc5">★</label>
-      <input type="radio" name="guiaConocimiento" id="gc4" value="4"><label for="gc4">★</label>
-      <input type="radio" name="guiaConocimiento" id="gc3" value="3"><label for="gc3">★</label>
-      <input type="radio" name="guiaConocimiento" id="gc2" value="2"><label for="gc2">★</label>
-      <input type="radio" name="guiaConocimiento" id="gc1" value="1"><label for="gc1">★</label>
-    </div>
+  <label>Guía - Actitud</label>
+  <div class="rating">
+    <input type="radio" name="guiaActitud" value="5" id="ga5"><label for="ga5">★</label>
+    <input type="radio" name="guiaActitud" value="4" id="ga4"><label for="ga4">★</label>
+    <input type="radio" name="guiaActitud" value="3" id="ga3"><label for="ga3">★</label>
+    <input type="radio" name="guiaActitud" value="2" id="ga2"><label for="ga2">★</label>
+    <input type="radio" name="guiaActitud" value="1" id="ga1"><label for="ga1">★</label>
+  </div>
 
-    <label>Guía - Idioma</label>
-    <div class="rating">
-      <input type="radio" name="guiaIdioma" id="gi5" value="5"><label for="gi5">★</label>
-      <input type="radio" name="guiaIdioma" id="gi4" value="4"><label for="gi4">★</label>
-      <input type="radio" name="guiaIdioma" id="gi3" value="3"><label for="gi3">★</label>
-      <input type="radio" name="guiaIdioma" id="gi2" value="2"><label for="gi2">★</label>
-      <input type="radio" name="guiaIdioma" id="gi1" value="1"><label for="gi1">★</label>
-    </div>
+  <label>Satisfacción General</label>
+  <div class="rating">
+    <input type="radio" name="satisfaccionGeneral" value="5" id="sg5"><label for="sg5">★</label>
+    <input type="radio" name="satisfaccionGeneral" value="4" id="sg4"><label for="sg4">★</label>
+    <input type="radio" name="satisfaccionGeneral" value="3" id="sg3"><label for="sg3">★</label>
+    <input type="radio" name="satisfaccionGeneral" value="2" id="sg2"><label for="sg2">★</label>
+    <input type="radio" name="satisfaccionGeneral" value="1" id="sg1"><label for="sg1">★</label>
+  </div>
 
-    <!-- Conductor -->
-    <label>Conductor - Actitud</label>
-    <div class="rating">
-      <input type="radio" name="conductorActitud" id="ca5" value="5"><label for="ca5">★</label>
-      <input type="radio" name="conductorActitud" id="ca4" value="4"><label for="ca4">★</label>
-      <input type="radio" name="conductorActitud" id="ca3" value="3"><label for="ca3">★</label>
-      <input type="radio" name="conductorActitud" id="ca2" value="2"><label for="ca2">★</label>
-      <input type="radio" name="conductorActitud" id="ca1" value="1"><label for="ca1">★</label>
-    </div>
+  <label>Comentarios</label>
+  <textarea name="comentarios"></textarea>
 
-    <label>Conductor - Manejo</label>
-    <div class="rating">
-      <input type="radio" name="manejo" id="m5" value="5"><label for="m5">★</label>
-      <input type="radio" name="manejo" id="m4" value="4"><label for="m4">★</label>
-      <input type="radio" name="manejo" id="m3" value="3"><label for="m3">★</label>
-      <input type="radio" name="manejo" id="m2" value="2"><label for="m2">★</label>
-      <input type="radio" name="manejo" id="m1" value="1"><label for="m1">★</label>
-    </div>
+  <button type="submit">Enviar Encuesta</button>
 
-    <label>Satisfacción General</label>
-    <div class="rating">
-      <input type="radio" name="satisfaccionGeneral" id="sg5" value="5"><label for="sg5">★</label>
-      <input type="radio" name="satisfaccionGeneral" id="sg4" value="4"><label for="sg4">★</label>
-      <input type="radio" name="satisfaccionGeneral" id="sg3" value="3"><label for="sg3">★</label>
-      <input type="radio" name="satisfaccionGeneral" id="sg2" value="2"><label for="sg2">★</label>
-      <input type="radio" name="satisfaccionGeneral" id="sg1" value="1"><label for="sg1">★</label>
-    </div>
+</form>
 
-    <label>Comentarios</label>
-    <textarea name="comentarios" placeholder="Escribe tus comentarios aquí..."></textarea>
+<script>
+const form = document.getElementById("surveyForm");
 
-    <button type="submit">Enviar Encuesta</button>
-  </form>
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
 
-  <script>
-    const form = document.getElementById('surveyForm');
-    form.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      const data = Object.fromEntries(new FormData(form).entries());
+  const btn = form.querySelector("button");
+  btn.disabled = true;
+  btn.innerText = "Enviando...";
 
-      try {
-        await fetch("https://script.google.com/macros/s/AKfycbzsas2HkpF4G9IGP5y2biOwqfW4Quf5l0_Hh2U5d4D4SHr4aEW5prZJVN_trOqqtqOT/exec", {
-          method: "POST",
-          mode: 'cors',
-          redirect: 'follow',
-          headers: { 'Content-Type': 'text/plain' },
-          body: JSON.stringify(data)
-        });
+  const data = Object.fromEntries(new FormData(form).entries());
 
-        alert("¡Encuesta enviada con éxito!");
-        form.reset();
-      } catch (err) {
-        alert("Error al enviar: " + err.message);
-      }
+  try {
+    const res = await fetch("https://script.google.com/macros/s/AKfycbzsas2HkpF4G9IGP5y2biOwqfW4Quf5l0_Hh2U5d4D4SHr4aEW5prZJVN_trOqqtqOT/exec", {
+      method: "POST",
+      body: JSON.stringify(data)
     });
-  </script>
+
+    const text = await res.text();
+
+    if (res.ok && text.trim() === "ok") {
+      alert("✅ Encuesta enviada con éxito");
+      form.reset();
+    } else {
+      alert("⚠️ Error al enviar");
+    }
+
+  } catch (err) {
+    alert("❌ Error de red: " + err.message);
+  }
+
+  btn.disabled = false;
+  btn.innerText = "Enviar Encuesta";
+});
+</script>
+
 </body>
 </html>
